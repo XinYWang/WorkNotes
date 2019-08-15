@@ -1,0 +1,9 @@
+gitk
+fzf, a tool assists unspecific find
+repo
+BuildHelper, a unified build system, to isolate the build trees
+Linux command: Find tiles containing specific text:  Natigate to the object folder, grep -iRl "your-text-to-find" ./ or grep -iRl "linux" /home/user/Documents/winaero
+alias open="xdg-open"
+alias zfile="gedit ~/.zshrc"
+alias uzfile="source ~/.zshrc"
+In .zshrc file, # Project paths saved as a variable   export AMSR_SIP_DIR=~/workspace/amsr-checkout 
