@@ -1,0 +1,12 @@
+Axivion Bauhaus && Dashboard, Bauhaus provides a range of tools for automated static code analysis
+#include <utility> a = std::move(b); -- We can pass an l-value to std::move, and it will return an r-value reference
+C++14, std::make_unique, "make" a smart pointer, which can be simply implemented as below
+    template<typename T, typename... Ts>
+    std::unique_ptr<T> make)unique(Ts&&... params)
+    {
+      return std::unique_ptr<T>(new T(std::forward<T>(params)...));
+    }
+    There are advantages of using std::make_unique over the new operator for initializing a std::unique_ptr, compare these two methods,
+    <1> DiagnosticIntegration* ptr_diagnostic_integration{ new DiagnosticIntegration{std::move(uptr_diagn_event_hndl)}};
+        generic_service_mgr.InjectDiagnosticAccess(std::unique_ptr<nsgenericmodule::GmDiagnosticAccessInterface>{ptr_diagnostic_integration});
+    <2>  generic_service_mgr.InjectDiagnosticAccess(std::make_unique<DiagnosticIntegration>(std::move(uptr_diagn_event_hndl)));
