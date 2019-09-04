@@ -1,0 +1,8 @@
+ ECU is deployed with an Hypervisor allowing the usage of several independent OS partitions
+ 
+ std::mutex mtx;
+ std::lock_guard<std::mutex> lock(mtx); 
+    The lock_guard class is non-copyable, only owns constructer and destructer.
+    When a lock_guard object is created, it attempts to take ownership of the mutex it is given.  
+    When control leaves the scope in which the lock_guard object was created, the lock_guard is destructed and the mutex is released.
+ std::unique_lock<std::mutex> lock(pool_mutex_);
