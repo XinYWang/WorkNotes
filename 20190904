@@ -1,0 +1,7 @@
+singleton pattern:
+  It means that it is only possible to create one instance within the Vkms application and it is accessible by getting a
+  reference to it using a static method.
+
+Dependency injection: a design pattern used to eliminate direct dependencies to internal and external interfaces.
+  Instead of a direct import of these interfaces, the module declares an interface which shall be implemented outside
+  the module and injected to it during initialization. 
