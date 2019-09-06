@@ -1,0 +1,30 @@
+std::transform applies the given function to a range and stores the result in another range
+  std::transform(s.begin(), s.end(), std::back_inserter(out), ::toupper);
+  to convert a string in place to uppercase using the toupper function
+
+Move constructors and move assignment
+  Whereas the goal of the copy constructor and copy assignment is to make a copy of one object to another, 
+  the goal of the move constructor and move assignment is to move ownership of the resources from one object to another 
+  (which is much less expensive than making a copy).
+  AClass(AClass &&) = default; AClass &operator= (AClass &&) = default
+  // Move constructor
+	DynamicArray(DynamicArray &&arr): m_length(arr.m_length), m_array(arr.m_array)
+	{
+		arr.m_length = 0;
+		arr.m_array = nullptr;
+	}
+	// Move assignment
+	DynamicArray& operator=(DynamicArray &&arr)
+	{
+		if (&arr == this)
+			return *this;
+ 
+		delete[] m_array;
+ 
+		m_length = arr.m_length;
+		m_array = arr.m_array;
+		arr.m_length = 0;
+		arr.m_array = nullptr;
+ 
+		return *this;
+	}
