@@ -1,0 +1,7 @@
+vector::emplace(), extends container by inserting new element at position, returns an iterator which points to the newly inserted element.
+    compared with std::insert(), avoid unnecessary temporary variable creation.
+    
+found=str.find(str2);
+if (found!=string::npos){...} //the pattern or substring has been found in the string.
+  npos is a static member constant value with the greatest possible value for an element of type size_t
+
