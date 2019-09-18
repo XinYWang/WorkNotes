@@ -1,0 +1,8 @@
+static specifier:
+  1. Hide, from global to local
+  2. static variables are stored on static storage area, not in stack, default init value is 0
+  3. Static variables when used inside function are initialized only once, and then they hold the value and have a scope till the program lifetime
+  4. Static member functions work for the class as whole rather than for a particular object of a class, cannot access ordinary data members and member functions, but only static data members and static member functions
+  5. Static data members of class are those members which are shared by all the objects and are not initialied using constructor, because these are not dependent on object initialization
+  6. Static data members of class must be initialized explicitly, always outside the class. If not initialized, Linker will give error.
+  
