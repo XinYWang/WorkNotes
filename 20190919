@@ -1,0 +1,9 @@
+Exception Handling:
+  try: represents a block of code that can throw an exception.
+  catch: represents a block of code that is executed when a particular exception is thrown.
+  throw: Used to throw an exception. Also used to list the exceptions that a function throws, but doesn’t handle itself.
+ 
+std::bitset b1(str, pos, n, zero, one); 
+  std::string alpha_bit_string = "aBaaBBaB"; 
+  std::bitset<8> b1(alpha_bit_string, 0, alpha_bit_string.size(), 'a', 'B');       
+  std::cout << b1 << '\n';   // [0,1,0,0,1,1,0,1] 
