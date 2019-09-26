@@ -1,0 +1,17 @@
+std::condition_variable
+  The thread that intends to modify the variable has to:
+    1. acquire a std::mutex (typically via std::lock_guard)
+    2. perform the modification while the lock is held
+    3. execute notify_one or notify_all on the std::condition_variable (the lock does not need to be held for notification)
+ 
+ Any thread that intends to wait on std::condition_variable has to
+    1. acquire a std::unique_lock<std::mutex>, on the same mutex as used to protect the shared variable
+    2. execute wait, wait_for, or wait_until. The wait operations atomically release the mutex and suspend the execution of the thread.
+    3. When the condition variable is notified, a timeout expires, or a spurious wakeup occurs, the thread is awakened, and the mutex is asttomically reacquired. The thread should then check the condition and resume waiting if the wake up was spurious
+    
+std::find_if(InputIterator first, InputIterator last, UnaryPredicate pred)
+  Returns an iterator to the first element in the range [first,last) for which pred returns true. 
+  If no such element is found, the function returns last
+  auto it = std::find_if(std::cbegin(type_ids_list),
+                         std::cend(type_ids_list),
+                         [&](TypeIdInfo const& value) { return value.type_id == type_id; });
