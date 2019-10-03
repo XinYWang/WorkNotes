@@ -1,0 +1,6 @@
+static_assert ( bool_constexpr , message)
+  If bool_constexpr returns true, this declaration has no effect. 
+  Otherwise a compile-time error is issued, and the text of message, if any, is included in the diagnostic message.
+  
+std::uninitialized_copy(ExecutionPolicy&& policy, InputIt first, InputIt last, ForwardIt d_first)
+   Copies elements from the range [first, last) to an uninitialized memory area beginning at d_first, but executed according to policy. 
