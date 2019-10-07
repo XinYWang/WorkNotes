@@ -1,0 +1,8 @@
+1. RTTI (Runtime Type Information)
+  RTTI is a mechanism that exposes info about an object’s datatype during runtime, which can be available only when the class has at least one virtual function.
+  It allows the type of an object to be determined when the program is executing.
+    Base *base_ptr = new Derived;
+    Derived *derived_ptr = dynamic_cast<Derived*>(base_ptr);
+
+2. Reduce Compilation Times With extern template
+  extern template class vector<MyClass>;
