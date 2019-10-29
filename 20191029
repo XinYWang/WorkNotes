@@ -1,0 +1,13 @@
+revert to one previous git operation:
+  1. git reflog
+  2. git log and copy the commit-id
+  3. git reset --hard [commit-id]
+  
+git drop/remove one unwanted commit between
+  1. git log and copy the commit-it
+  2. git rebase -i [commit-it]
+  3. edit, change the unwanted commit from "pick" to "drop"
+  4. save and exit
+  
+git undo one commit (without abandoning the code)
+  git reset --soft HEAD^
