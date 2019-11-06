@@ -1,0 +1,12 @@
+template<typename T>
+  1. void foo(T param)          // pass by value
+  2. void foo(const T& param)   // pass by reference without considering the rvalue
+  3. void foo(T&& param)        // pass by reference (both lvalue and rvalue)
+
+std::cout << typeid(x).name() << std::endl;
+  output the type of x at runtime
+ 
+decltype(auto) get(Container&& c, Index i)    // decltype(auto) automatically infer to return type
+{                                             // universal reference
+    return std::forward<Container>(c)[i];     // perfect forwarding  
+}
