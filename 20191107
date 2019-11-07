@@ -1,0 +1,4 @@
+Linux Command: find certain files with same suffic in current directory and its subdirectories, then move it to another folder
+  find . -name "*-report.xml" -exec mv '{}' $ARTIFACTS_DIR/test/gtest/ \;
+Linux Command: find certain files by name in current directory and its subdirectories, then delete it
+  find . -name "*-report.xml" -delete
