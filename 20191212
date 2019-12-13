@@ -1,0 +1,7 @@
+std::enable_shared_from_this
+  e.g. class Domain : public std::enable_shared_from_this<Domain>, public other {};
+  Allows an object "obj" that is currently managed by a std::shared_ptr named "ptr" to 
+  safely generate additional std::shared_ptr instances ptr1, ptr2, ... that all share ownership of obj with ptr.
+  
+If an object "obj" of type T is managed by a std::shared_ptr<T> named "ptr",
+then calling T::shared_from_this() will return a new std::shared_ptr<T> that shares ownership of "obj" with ptr.
