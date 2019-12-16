@@ -1,0 +1,49 @@
+sudo docker container kill $CONTAINER_NAME
+sudo docker rm "$CONTAINER_NAME"
+docker system prune
+docker rmi -f sdk runner builder
+
+# stop docker service:
+sudo systemctl stop docker
+
+ps aux | grep -i docker | grep -v grep
+
+# reload systemd daemon:
+systemctl daemon-reload
+
+# rsync current docker data to a new directory
+sudo rsync -aqxp /var/lib/docker /home/vsxxxx/workspace/docker
+
+# safely start docker daemon:
+systemctl start docker
+
+# The commands to save and Load docker image
+docker save -o ./sdk.tar sdk
+docker load -i sdk.tar
+
+# Run the docker and mount the related source code directory
+  docker run \
+      -d -it \
+      --init \
+      -e HOST_USER_ID="$HOST_UID" \
+      -e HOST_USER_GID="$HOST_GUID" \
+      -v "$BUILD_DIR":"$BUILD_DIR" \
+      -w "$BUILD_DIR" \
+      -e COLUMNS="`tput cols`" \
+      -e LINES="`tput lines`" \
+      -p 2000:2000 \
+      -p 13400:13400 \
+      --hostname=sdk \
+      --privileged \
+      --ulimit rtprio=99 \
+      --cap-add=sys_nice \
+      --name $CONTAINER_NAME \
+      amsr_sdk:latest \
+      /bin/zsh	
+      
+# Go inside the docker container and start a zsh there
+docker container exec -it -u adaptive $CONTAINER_NAME zsh
+
+docker exec -it $CONTAINER_NAME bash -c "cd Build && make -B src-gen"
+
+docker exec -it $CONTAINER_NAME bash -c "cd Build && make -j4 && make install"
