@@ -1,4 +1,5 @@
 Axivion Bauhaus && Dashboard, Bauhaus provides a range of tools for automated static code analysis
+
 #include <utility> a = std::move(b); -- We can pass an l-value to std::move, and it will return an r-value reference
 C++14, std::make_unique, "make" a smart pointer, which can be simply implemented as below
     template<typename T, typename... Ts>
