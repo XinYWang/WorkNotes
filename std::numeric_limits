@@ -1,0 +1,5 @@
+The numeric_limits class template provides a standardized way to query various properties of arithmetic types
+
+std::numeric_limits<unsigned char>::max()
+std::numeric_limits<T>::min()
+std::numeric_limits<T>::epsilon()
