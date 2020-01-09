@@ -1,3 +1,8 @@
+gitk
+
+git diff > xxx.patch
+git apply xxx.patch
+
 revert to one previous git operation:
   1. git reflog
   2. git log and copy the commit-id
