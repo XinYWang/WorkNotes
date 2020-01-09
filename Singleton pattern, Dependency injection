@@ -1,6 +1,40 @@
 singleton pattern:
-  It means that it is only possible to create one instance within the Vkms application and it is accessible by getting a
+  It means that it is only possible to create one instance within the application and it is accessible by getting a
   reference to it using a static method.
+
+template <typename T>
+class Singleton {
+ public:
+  static T& Instance() {
+    if (m_pInstance == NULL) {
+      Lock lock;
+      if (m_pInstance == NULL) {
+        m_pInstance = new T();
+        atexit(Destroy);
+      }
+      return *m_pInstance;
+    }
+    return *m_pInstance;
+  }
+
+ protected:
+  Singleton(void) {}
+  ~Singleton(void) {}
+
+ private:
+  Singleton(const Singleton& rhs) {}
+  Singleton& operator=(const Singleton& rhs) {}
+
+  void Destroy() {
+    if (m_pInstance != NULL)
+      delete m_pInstance;
+    m_pInstance = NULL;
+  }
+  static T* volatile m_pInstance;
+};
+
+template <typename T>
+T* Singleton::m_pInstance = NULL;
 
 Dependency injection: a design pattern used to eliminate direct dependencies to internal and external interfaces.
   Instead of a direct import of these interfaces, the module declares an interface which shall be implemented outside
