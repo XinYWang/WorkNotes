@@ -1,0 +1,22 @@
+The Curiously Recurring Template Pattern (CRTP), The purpose of doing this is using the derived class in the base class.
+template <typename T>
+class Base
+{
+    public:
+    void doSomething()
+    {
+        T& derived = static_cast<T&>(*this);
+        // use derived...
+    }
+    private:
+    Base(){};
+    friend T;
+};
+ 
+class Derived : public Base<Derived>
+{
+    ...
+};
+
+If two classes happen to derive from the same CRTP base class we likely get to undefined behaviour, 
+therefore there's a need to add a private constructor in the base class, and make the base class friend with the templated class
