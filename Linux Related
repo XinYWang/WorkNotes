@@ -10,10 +10,6 @@ alias zfile="gedit ~/.zshrc"
 alias uzfile="source ~/.zshrc"
 In .zshrc file, # Project paths saved as a variable   export AMSR_SIP_DIR=~/workspace/amsr-checkout 
 
-gitk
-git diff > xxx.patch
-git apply xxx.patch
-
 Linux command: Find tiles containing specific text:  Natigate to the object folder, grep -iRl "your-text-to-find" ./ or grep -iRl "linux" /home/user/Documents/winaero
 
 Linux Command: find certain files with same suffic in current directory and its subdirectories, then move it to another folder
