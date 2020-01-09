@@ -1,4 +1,6 @@
-Return Value Optimization(RVO) is a compiler optimization technique, which uses parent stack frame (or an arbitrary block of memory) to avoid copying.
+Return Value Optimization(RVO) is a compiler optimization technique, 
+which uses parent stack frame (or an arbitrary block of memory) to avoid copying.
+
 while std::move is just an rvalue cast, which also instructs the compiler that it's eligible to move the object. 
 The price of moving is lower than copying but higher than RVO, 
 so never apply std::move to local objects if they would otherwise be eligible for the RVO.
