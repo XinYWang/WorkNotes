@@ -1,0 +1,23 @@
+repo forall .vc "git clean -df"
+
+fzf, a tool assists unspecific find
+
+BuildHelper, a unified build system, to isolate the build trees
+Axivion Bauhaus && Dashboard, Bauhaus provides a range of tools for automated static code analysis
+
+alias open="xdg-open"
+alias zfile="gedit ~/.zshrc"
+alias uzfile="source ~/.zshrc"
+In .zshrc file, # Project paths saved as a variable   export AMSR_SIP_DIR=~/workspace/amsr-checkout 
+
+gitk
+git diff > xxx.patch
+git apply xxx.patch
+
+Linux command: Find tiles containing specific text:  Natigate to the object folder, grep -iRl "your-text-to-find" ./ or grep -iRl "linux" /home/user/Documents/winaero
+
+Linux Command: find certain files with same suffic in current directory and its subdirectories, then move it to another folder
+  find . -name "*-report.xml" -exec mv '{}' $ARTIFACTS_DIR/test/gtest/ \;
+  
+Linux Command: find certain files by name in current directory and its subdirectories, then delete it
+  find . -name "*-report.xml" -delete
