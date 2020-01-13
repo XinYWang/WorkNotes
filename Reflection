@@ -1,0 +1,6 @@
+"The term reflection refers to the ability of a computer program to observe and possibly alter its own structure and/or its behavior."
+The usages:
+  1. serialization
+  2. object-relational mapping (ORM)
+  3. remote method invocation (RMI)
+  4. construction of class instances from external data representations
