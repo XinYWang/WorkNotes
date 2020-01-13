@@ -1,0 +1,16 @@
+std::transform applies the given function to a range and stores the result in another range, beginning at d_first.
+Version1: template<class InputIt, class OutputIt, class UnaryOperation>
+  OutputIt transform(InputIt first1, InputIt last1, OutputIt d_first, UnaryOperation unary_op)
+Version2: template<class InputIt1, class InputIt2, class OutputIt, class BinaryOperation>
+  OutputIt transform(InputIt1 first1, InputIt1 last1, InputIt2 first2, OutputIt d_first, BinaryOperation binary_op)
+
+For example:  
+  std::vector<std::size_t> ordinals;
+  std::transform(s.begin(), s.end(), std::back_inserter(ordinals),
+               [](unsigned char c) -> std::size_t { return c; });
+
+std::back_inserter is a convenience function template that constructs a std::back_insert_iterator for the container c,
+with the type deduced from the type of the argument.
+A std::back_insert_iterator which can be used to add elements to the end of the container c
+template< class Container >
+std::back_insert_iterator<Container> back_inserter( Container& c );
