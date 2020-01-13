@@ -1,0 +1,10 @@
+int atexit( /*atexit-handler*/* func );
+Registers the function pointed to by "func" to be called on normal program termination (via std::exit() or returning from the main function)
+
+If a function exits via an exception, std::terminate is called.
+returns 0 if the registration succeeds, nonzero value otherwise.
+
+atexit is thread-safe: calling the function from several threads does not induce a data race.
+
+If more than one atexit function have been called in the main, then all the specified function will be executed in a reverse manner, 
+same as of the functioning of the stack.
