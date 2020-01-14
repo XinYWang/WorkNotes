@@ -20,3 +20,7 @@ class Derived : public Base<Derived>
 
 If two classes happen to derive from the same CRTP base class we likely get to undefined behaviour, 
 therefore there's a need to add a private constructor in the base class, and make the base class friend with the templated class
+
+Usage of VPtr and VTable can be avoided altogether through Curiously Recurring Template Pattern (CRTP), 
+which could help to avoid the drop of the performance of program in the case of a virtual routine is called thousands of times.
+Extra indirection (pointer dereference) for each call to a virtual method makes accessing VTable a costly operation.
