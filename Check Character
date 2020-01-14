@@ -1,0 +1,20 @@
+#include <cctype.h>
+
+/* Checks whether c is either a decimal digit or an uppercase or lowercase letter */
+int isalnum ( int c );
+
+/* Checks whether c is an alphabetic letter */
+int isalpha ( int c );
+
+/* Check if character is decimal digit */
+int isdigit ( int c );
+
+/* Checks if the given character is whitespace character */
+int isspace( int ch );
+
+islower()
+
+isupper()
+
+/* Checks if the given character is a hexadecimal numeric character */
+int isxdigit( int ch );
