@@ -2,10 +2,24 @@ SFINAE: Substitution Failure Is Not An Error
   specifies that an invalid template parameter substitution itself is not an error
   
 std::enable_if, a convenient utility to use boolean conditions to trigger SFINAE, a mechanism to help eliminate invalid overload possibilities  
+template< bool B, class T = void >
+using enable_if_t = typename enable_if<B,T>::type;
+
+struct T {
+    enum { int_t, float_t } m_type;
+    template <typename Integer, std::enable_if_t<std::is_integral<Integer>::value, int> = 0>
+    T(Integer) : m_type(int_t) {}
+ 
+    template <typename Floating, std::enable_if_t<std::is_floating_point<Floating>::value, int> = 0>
+    T(Floating) : m_type(float_t) {} // to avoid redefinition for two function templates that differ only in their default template arguments
+};
+
 std::is_void, this template returns a boolean value if the type is a void, otherwise a non-void
-  enable_if<treu, R>::type is an alias for R
+  enable_if<true, R>::type, is an alias for R
   template <class A, typename B, typename... ArgumentTypes>
   typename std::enable_if<std::is_void<A>::value, A>::type CallFunction(
       EnumType taskId, ArgumentTypes&... args) const {}
       
 <typename... Args> is called a template parameter pack, and <Args... args> is called a function parameter pack 
+
+A related personal blog link: https://eli.thegreenplace.net/2014/sfinae-and-enable_if
