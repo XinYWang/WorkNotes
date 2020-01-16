@@ -1,0 +1,25 @@
+Resource Acquisition is Initialization (RAII) -- Scope-Bound Resource Management
+
+The lifetime of the object is bound to the scope of a variable, 
+so when the variable goes out of scope then the destructor will release the resource
+
+In brief,
+/* encapsulate a resource into a class (whose constructor usually - but not necessarily - acquires the resource, and its destructor always releases it)
+/* use the resource via a local instance of the class*
+/* the resource is automatically freed when the object gets out of scope
+
+This guarantees that whatever happens while the resource is in use, 
+it will eventually get freed (whether due to normal return, destruction of the containing object, or an exception thrown).
+
+e.g.,
+class ManagedResourceHandle {
+public:
+   ManagedResourceHandle(RawResourceHandle* rawHandle) : rawHandle_(rawHandle) {};
+   ~ManagedResourceHandle() {delete rawHandle_; }
+   ... // omitted operator*, etc
+private:
+   RawResourceHandle* rawHandle_;
+};
+
+ManagedResourceHandle handle(createNewResource());
+handle->performInvalidOperation();
