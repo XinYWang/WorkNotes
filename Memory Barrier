@@ -1,0 +1,10 @@
+It is a type of barrier instruction that causes a CPU or compiler to 
+enforce an ordering constraint on memory operations issued before and after the barrier instruction.
+ 
+Aim to degrade the out-of order execution which cause unpredictable behaviour in concurrent programs
+ 
+"volatile" specifier allows to directly access memory-mapped I/O,
+guarantees that the volatile reads and volatile writes will happen in the exact order specified in the source code, but it doesn't guarantee a memony barrier to enforce cache-consistency, 
+the compiler may generate code (or the CPU may re-order execution) such that a volatile read or write is reordered with regard to non-volatile reads or writes,
+thus limiting its usefulness as an inter-thread flag or mutex.
+ 
