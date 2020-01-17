@@ -1,0 +1,13 @@
+Performs compile-time assertion checking
+
+static_assert(bool_constexpr, message) / static_assert(bool_constexpr) (since C++17)
+
+If bool_constexpr returns true, this declaration has no effect. 
+Otherwise a compile-time error is issued, and the text of message, if any, is included in the diagnostic message.
+
+template <class T>
+struct data_structure
+{
+    static_assert(std::is_default_constructible<T>::value,
+                  "Data Structure requires default-constructible elements");
+};
