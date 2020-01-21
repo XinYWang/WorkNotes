@@ -1,0 +1,10 @@
+template <class T, class... Args> struct is_constructible;
+a constructible type is a type that can be constructed using a particular set of arguments.
+e.g., std::is_constructible<A, int, int>::value; (bool, either true or false)
+ 
+template <class T> struct is_copy/move_constructible;
+A copy constructible type is a type that can be constructed from a value or reference of the same type.
+A move constructible type is a type that can be constructed from an rvalue reference of its type.
+
+std::is_copy_constructible<A>::value;
+std::is_move_constructible<B>::value;
