@@ -1,0 +1,25 @@
+1.CMAKE:
+  set_target_properties( <my_target> PROPERTIES
+    UNITY_BUILD ON
+  )
+  Globally set(CMAKE_UNITY_BUILD ON)
+  //The principle behind a UB is about reducing the number of times a file is opened and the number of files that are opened.
+  /* This is done by creating a (set of) unity sources which #include the original sources, 
+     then compiling these unity sources instead of the originals */
+  /* Speed-up reasons:
+     common headers from the different .cpp files end up being included and parsed fewer times
+     common template instantiations with the same types in separate .cpp files (e.g., vector<int>) end up being done in fewer places
+     the linker has to stitch much fewer .obj files in the end - there are a lot less weak symbols to deduplicate
+     less compiler invocations and less .obj files are written to disk */
+  
+  target_precompile_headers(<my_target> PRIVATE my_pch.h) // Precompiled Headers
+  // to compile a common section of included headers once for many translation units. 
+  // The compiler compiles it once, and saves its internal state
+  
+2. Forward Declaration
+  A forward declaration tells the compiler about the existence of an entity before actually defining the entity, 
+  usually the class A is pre-defined before its use so that it can be called and used by other classes that are defined before A
+
+3. Pointer to implementation (PImpl)
+
+4. #pragma once
