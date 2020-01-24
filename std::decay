@@ -1,0 +1,8 @@
+std::remove_reference would leave const and volatile.
+vs
+std::decay:
+Applies "lvalue-to-rvalue", "array-to-pointer", and "function-to-pointer" implicit conversions to the type T,
+removes cv-qualifiers, and defines the resulting type as the member typedef type.
+
+template< class T >
+using decay_t = typename decay<T>::type;
