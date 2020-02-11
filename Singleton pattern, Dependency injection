@@ -2,7 +2,7 @@ singleton pattern:
   It means that it is only possible to create one instance within the application and it is accessible by getting a
   reference to it using a static method.
   
-Lazy-man Mode (Thread-Safe):
+Lazy-man Mode (Thread-Safe): Initialize the instance at the momoent the function GetInstance() being called
   template <typename T>
   class Singleton {
   public:
@@ -37,7 +37,7 @@ Lazy-man Mode (Thread-Safe):
   template <typename T>
   T* Singleton::m_pInstance = NULL;
 *************************************************
-Hungry-man Mode:
+Hungry-man Mode(Thread-Safe): Initialize the instance before the function GetInstance() being called
   template <class T>
   class singleton {
 
