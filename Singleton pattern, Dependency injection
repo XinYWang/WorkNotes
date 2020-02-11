@@ -37,7 +37,7 @@ Lazy-man Mode (Thread-Safe): Initialize the instance at the momoent the function
   template <typename T>
   T* Singleton::m_pInstance = NULL;
 *************************************************
-Hungry-man Mode(Thread-Safe): Initialize the instance before the function GetInstance() being called
+Hungry-man Mode(Thread-Safe): Initialize the instance before the function GetInstance() being called, so no need to worry about the issue of instances being created by muti-threads 
   template <class T>
   class singleton {
 
