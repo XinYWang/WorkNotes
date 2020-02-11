@@ -9,8 +9,9 @@ Lazy-man Mode (Thread-Safe): Initialize the instance at the momoent the function
     static T& GetInstance() {
      if (m_pInstance == NULL) {
         Lock lock;
-        if (m_pInstance == NULL) {  
-          m_pInstance = new T();
+        if (m_pInstance == NULL) {
+          T* ptmp = new T();
+          m_pInstance = ptmp;
           atexit(Destroy);
         }
         return *m_pInstance;
