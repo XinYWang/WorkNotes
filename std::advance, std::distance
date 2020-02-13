@@ -1,0 +1,11 @@
+template< class InputIt, class Distance >
+constexpr void advance( InputIt& it, Distance n );
+
+Increments given iterator it by n elements.
+  auto vi = v.begin();
+  std::advance(vi, 2);
+
+template< class InputIt >
+constexpr typename std::iterator_traits<InputIt>::difference_type distance( InputIt first, InputIt last );
+The number of increments needed to go from first to last, which might be negative
+  std::distance(v.begin(), v.end())
