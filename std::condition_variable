@@ -1,0 +1,30 @@
+The condition_variable class is a synchronization primitive that can be used to block a thread, or multiple threads at the same time, 
+until another thread both modifies a shared variable (the condition), and notifies the condition_variable.
+
+Even if the shared variable is atomic, it must be modified under the mutex in order to correctly publish the modification to the waiting thread.
+
+Any thread that intends to wait on std::condition_variable has to
+  1. acquire a std::unique_lock<std::mutex>, on the same mutex as used to protect the shared variable
+  2. execute wait, wait_for, or wait_until. The wait operations atomically release the mutex and suspend the execution of the thread.
+  3. When the condition variable is notified, a timeout expires, or a spurious wakeup occurs, the thread is awakened, and the mutex is atomically reacquired. 
+     The thread should then check the condition and resume waiting if the wake up was spurious.
+
+void worker_thread()
+{
+    // Wait until main() sends data
+    std::unique_lock<std::mutex> lk(m);
+    cv.wait(lk, []{return ready;});
+ 
+    // after the wait, we own the lock.
+    std::cout << "Worker thread is processing data\n";
+    data += " after processing";
+ 
+    // Send data back to main()
+    processed = true;
+    std::cout << "Worker thread signals data processing completed\n";
+ 
+    // Manual unlocking is done before notifying, to avoid waking up
+    // the waiting thread only to block again (see notify_one for details)
+    lk.unlock();
+    cv.notify_one();
+}
