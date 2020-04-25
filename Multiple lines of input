@@ -1,4 +1,4 @@
-first line input: 5 , 5
+first line input: 5, 5
 second line input: 1 2 3 4 5
 third line input: 5 6 7 8 9
 
@@ -6,12 +6,13 @@ third line input: 5 6 7 8 9
 #include <vector>
 
 int main() {
-  int m = 0, n = 0, j;
-  std::vector<int> input_m(5, 0);
-  std::vector<int> input_n(5, 0);
+  int m = 0, n = 0;
+  int count_m = 0, count_n = 0;
   std::cin >> m >> n;
   std::cout << m << " " << n << std::endl;
-  int count_m = 0, count_n = 0;
+  std::vector<int> input_m(m, 0);
+  std::vector<int> input_n(n, 0);
+
   while (count_m < m) {
     scanf("%d", &input_m[count_m++]);
   }
@@ -21,8 +22,8 @@ int main() {
 
   for(auto i: input_m)
     std::cout << i << " ";
-  std::cout << std::endl;
-  for(auto i: input_n)
-    std::cout << i << " ";
+    std::cout << std::endl;
+  for(auto j: input_n)
+    std::cout << j << " ";
   return 0;
 }
