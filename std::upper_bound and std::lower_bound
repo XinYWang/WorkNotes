@@ -1,0 +1,8 @@
+lower_bound returns an iterator pointing to the first element in the range [first,last) which has a value not less than ‘val’.
+upper_bound returns an iterator pointing to the first element in the range [first,last) which has a value greater than ‘val’.
+
+vector<int>::iterator lower, upper;
+lower = lower_bound(v.begin(), v.end(), 6);
+upper = upper_bound(v.begin(), v.end(), 6);
+
+(upper - lower) could calculate the duplicated number of a value in an sorted array
